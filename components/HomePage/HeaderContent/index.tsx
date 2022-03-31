@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import styles from "./styles";
 import appdata from "../data";
+import { useNavigation } from "@react-navigation/native";
 
 export type IconsProps = {
     id: number,
@@ -16,14 +17,20 @@ export type IconsProps = {
 
 const HeaderContent = () => {
 
+    const navigation = useNavigation();
+
+    const onPress = () => {
+        navigation.navigate('SendMoney');
+    }  
 
     const renderItem = ({item}: {item: IconsProps}) => {
         return (
             <TouchableOpacity
                 style={{
                     padding: 10,
-                    marginRight: 5,
+                    marginRight: 5, 
                 }}
+                onPress={onPress}
             >
                 <View
                     style={{

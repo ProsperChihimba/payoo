@@ -40,7 +40,7 @@ const icons = [
 const transactions = [
     {
         id: 1,
-        spendType: 'To USA',
+        spendType: 'USA trip',
         date: 'Nov 9',
         amount: '3400000.00',
         iconName: 'airplane',
@@ -49,7 +49,7 @@ const transactions = [
     },
     {
         id: 2,
-        spendType: 'Bando',
+        spendType: 'Bando wiki',
         date: 'Nov 10',
         amount: '5000.00',
         iconName: 'phone-portrait',
@@ -58,7 +58,7 @@ const transactions = [
     },
     {
         id: 3,
-        spendType: 'Repair',
+        spendType: 'Repair cd',
         date: 'Nov 19',
         amount: '50000.00',
         iconName: 'laptop',
@@ -67,7 +67,7 @@ const transactions = [
     },
     {
         id: 4,
-        spendType: 'Gym',
+        spendType: 'Gym day',
         date: 'Nov 19',
         amount: '7000.00',
         iconName: 'barbell-sharp',

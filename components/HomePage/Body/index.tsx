@@ -25,7 +25,7 @@ const Body = () => {
                     <Ionicons  name={item.iconName} size={18} color={item.iconColor} />
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row',  }}>
 
                     <View style={styles.bodySpend}>
                         <Text style={styles.spendText}>{ item.spendType }</Text>
@@ -34,7 +34,7 @@ const Body = () => {
 
                     <View>
                         <Text style={styles.spendText}>{item.amount}</Text>
-                        <Text style={styles.dateText}>{item.from}</Text>
+                        {/* <Text style={styles.dateText}>{item.from}</Text> */}
                     </View>
 
                 </View>
@@ -53,10 +53,6 @@ const Body = () => {
 
     return (
         <View style={styles.container}>
-
-            <View>
-                <Text style={styles.headerLine}></Text>
-            </View>
 
             <Text style={styles.headText}>Transactions</Text>
 

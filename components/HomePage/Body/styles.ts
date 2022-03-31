@@ -7,20 +7,12 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 35,
         height: '100%'
     },
-    headerLine: {
-        width: 100,
-        height: 5,
-        marginTop: 10,
-        marginHorizontal: '30%',
-        backgroundColor: '#e9e9f4',
-        borderRadius: 15,
-    },
     headText: {
         paddingLeft: 20,
         fontSize: 13,
         color: '#415352',
         paddingBottom: 20,
-        paddingTop: 15,
+        paddingTop: 20,
         fontWeight: 'bold'
     },
     bodyContainer: {

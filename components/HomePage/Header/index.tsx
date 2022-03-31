@@ -12,7 +12,7 @@ const Header = () => {
                     justifyContent: 'center',
                 }}
             >
-                <EvilIcons name="user" size={25} color="black" />
+                <EvilIcons name="user" size={30} color="black" />
             </TouchableOpacity>
         </View>
     )
