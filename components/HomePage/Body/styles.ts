@@ -5,26 +5,27 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderTopRightRadius: 35,
         borderTopLeftRadius: 35,
-        height: '60%',
+        height: '100%'
     },
     headerLine: {
         width: 100,
         height: 5,
         marginTop: 10,
+        marginHorizontal: '30%',
         backgroundColor: '#e9e9f4',
-        marginLeft: '30%',
         borderRadius: 15,
     },
     headText: {
-        paddingLeft: 15,
-        fontSize: 15,
-        color: '#839197',
-        paddingBottom: 25,
+        paddingLeft: 20,
+        fontSize: 13,
+        color: '#415352',
+        paddingBottom: 20,
         paddingTop: 15,
+        fontWeight: 'bold'
     },
     bodyContainer: {
         flexDirection: 'row',
-        marginHorizontal: 15,
+        marginHorizontal: 5,
         marginBottom: 25,
     },
     bodyIcon: {
@@ -45,10 +46,11 @@ const styles = StyleSheet.create({
     spendText: {
         fontWeight: 'bold',
         fontSize: 15,
-        color: '#787e88'
+        color: '#000',
+        fontFamily: 'Roboto'
     },
     dateText: {
-        color: '#d5d5e1'
+        color: '#415352'
     }
 })
 
