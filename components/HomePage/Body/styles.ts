@@ -11,19 +11,12 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         fontSize: 13,
         color: '#415352',
-        paddingBottom: 20,
-        paddingTop: 20,
+        paddingBottom: 15,
+        paddingTop: 10,
         fontWeight: 'bold'
-    },
-    bodyContainer: {
-        flexDirection: 'row',
-        marginHorizontal: 5,
-        marginBottom: 25,
     },
     bodyIcon: {
         marginRight: 20,
-        backgroundColor: '#f3f3f8',
-        borderRadius: 12,
         alignItems: 'center',
         justifyContent: 'center',
         height: 35,
@@ -31,18 +24,24 @@ const styles = StyleSheet.create({
     },
     bodySpend: {
         marginRight: 100,
+        justifyContent: 'center'
     },
     spendCost: {
         alignItems: 'flex-end',
     },
     spendText: {
-        fontWeight: 'bold',
-        fontSize: 15,
+        fontSize: 14,
         color: '#000',
-        fontFamily: 'Roboto'
+        fontWeight: '900'
+    },
+    amountText: {
+        fontSize: 14,
+        color: '#000',
+        fontWeight: 'bold'
     },
     dateText: {
-        color: '#415352'
+        color: '#415352',
+        fontSize: 10,
     }
 })
 

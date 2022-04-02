@@ -32,7 +32,25 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 3,
         elevation: 1,
-    }
+    },
+    cardContainer: {
+        backgroundColor: '#18206F',
+        borderRadius: 15,
+        height: 140,
+        width: '100%',
+    },
+    button: {
+        backgroundColor: '#32a7e2',
+        borderRadius: 12,
+        flexDirection: 'row',
+    },
+    buttonText: {
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignContent: 'center',
+    },
 })
 
 export default styles;

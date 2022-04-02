@@ -2,28 +2,28 @@ const icons = [
     {
         id: 1,
         iconType: 'Ionicons',
-        iconName: 'send',
+        iconName: 'ios-rocket',
         iconSize: 24,
-        iconColor: 'white',
-        backgroundColor: '#32a7e2',
+        iconColor: '#32a7e2',
+        backgroundColor: '#c7e1ee',
         title: 'Transfer'
     },
     {
         id: 2,
         iconType: 'Ionicons',
-        iconName: 'download',
+        iconName: 'ios-phone-portrait-outline',
         iconSize: 22,
-        iconColor: 'white',
-        backgroundColor: '#b548c6',
-        title: 'Top-up'
+        iconColor: '#b548c6',
+        backgroundColor: '#f1dcf5',
+        title: 'Airtime'
     },
     {
         id: 3,
         iconType: 'Ionicons',
         iconName: 'wallet',
         iconSize: 21,
-        iconColor: 'white',
-        backgroundColor: '#ff8700',
+        iconColor: '#ff8700',
+        backgroundColor: '#f6e0c7',
         title: 'Bill'
     },
     {
@@ -31,45 +31,49 @@ const icons = [
         iconType: 'Entypo',
         iconName: 'grid',
         iconSize: 24,
-        iconColor: 'white',
-        backgroundColor: '#22b07d',
+        iconColor: '#22b07d',
+        backgroundColor: '#c9efe1',
         title: 'More'
     }
 ]
 
+const sis = require('../../assets/images/sis.jpeg')
+const annie = require('../../assets/images/annie.jpg')
+const proc = require('../../assets/images/unnamed.jpg')
+
 const transactions = [
     {
         id: 1,
-        spendType: 'USA trip',
-        date: 'Nov 9',
-        amount: '3400000.00',
-        iconName: 'airplane',
+        spendType: 'Sister noa',
+        date: '9 Nov, 21',
+        amount: 'Tsh 340000',
+        iconName: sis,
         iconColor: '#22b07d',
         from: 'Emirates',
     },
     {
         id: 2,
-        spendType: 'Bando wiki',
-        date: 'Nov 10',
-        amount: '5000.00',
-        iconName: 'phone-portrait',
+        spendType: 'Annie',
+        date: '10 Nov, 21',
+        amount: 'Tsh 50000',
+        iconName: annie,
         iconColor: '#22b07d',
         from: 'M-Pesa',
     },
     {
         id: 3,
-        spendType: 'Repair cd',
-        date: 'Nov 19',
-        amount: '50000.00',
-        iconName: 'laptop',
+        spendType: 'young bro',
+        date: '19 Nov, 21',
+        amount: 'Tsh 5000',
+        iconName: proc,
         iconColor: '#22b07d',
         from: 'M-Pesa',
     },
     {
         id: 4,
         spendType: 'Gym day',
-        date: 'Nov 19',
-        amount: '7000.00',
+        date: '9 Nov, 21',
+        amount: annie,
         iconName: 'barbell-sharp',
         iconColor: '#22b07d',
         from: 'Mall',
@@ -77,9 +81,9 @@ const transactions = [
     {
         id: 5,
         spendType: 'Shoes',
-        date: 'Nov 19',
-        amount: '50000.00',
-        iconName: 'man-outline',
+        date: '10 Nov, 2021',
+        amount: '50000',
+        iconName: proc,
         iconColor: '#22b07d',
         from: 'Mall',
     },

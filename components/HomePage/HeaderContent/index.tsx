@@ -42,7 +42,7 @@ const HeaderContent = () => {
                         backgroundColor: item.backgroundColor,
                     }}
                 >
-                    <Ionicons name={item.iconName} size={item.iconSize} color="white" />
+                    <Ionicons name={item.iconName} size={item.iconSize} color={item.iconColor} />
                 </View>
                 <Text style={ styles.iconsText } >
                     {item.title}
@@ -53,10 +53,33 @@ const HeaderContent = () => {
 
     return (
         <View style={styles.container}>
-        
-            <View>
-                <Text style={styles.textTitle}>Your Balance</Text>
-                <Text style={styles.textBalance}>Tsh 26500.00</Text>
+
+            <View style={styles.cardContainer}>
+                <View>
+                    <View style={{ paddingTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <View style={{paddingLeft: 15, }}>
+                            <Text style={{fontWeight: 'bold', color: 'white'}}>USD</Text>
+                            <Text style={{paddingTop: 5, color: 'white'}}>$ 26500.00</Text>
+                        </View>
+                        <View style={{ marginRight: 15, justifyContent: 'center' }}>
+                            <Ionicons name="md-chevron-down-sharp" size={24} color="white"/>
+                        </View>
+                    </View>
+                    <View style={{paddingTop: 25, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity style={styles.button}>
+                            <View style={styles.buttonText}>
+                                <Ionicons name="ios-add-circle-sharp" size={20} color="white" style={{ paddingRight: 5 }} />
+                                <Text style={{ color: 'white', fontSize: 16}}>Add Money</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button}>
+                            <View style={styles.buttonText}>
+                                <Ionicons name="ios-rocket-outline" size={20} color="white" style={{ paddingRight: 5 }} />
+                                <Text style={{ color: 'white', fontSize: 16}}>Send Money</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
 
             <FlatList
@@ -66,7 +89,7 @@ const HeaderContent = () => {
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={item => `${item.id}`}
                 renderItem={renderItem}
-                contentContainerStyle={{paddingVertical: 20}}
+                contentContainerStyle={{paddingVertical: 10}}
             />
         </View>
     )
