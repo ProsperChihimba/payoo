@@ -13,14 +13,15 @@ export type IconsProps = {
     iconColor: string,
     backgroundColor: string,
     title: string,
+    navigationName: any,
 } 
 
 const HeaderContent = () => {
 
     const navigation = useNavigation();
 
-    const onPress = () => {
-        navigation.navigate('SendMoney');
+    const onPress = ({navigationName}: {navigationName?: any}) => {
+        navigation.navigate(navigationName);
     }  
 
     const renderItem = ({item}: {item: IconsProps}) => {
@@ -30,7 +31,7 @@ const HeaderContent = () => {
                     padding: 10,
                     marginRight: 5, 
                 }}
-                onPress={onPress}
+                onPress={() => navigation.navigate(item.navigationName)}
             >
                 <View
                     style={{

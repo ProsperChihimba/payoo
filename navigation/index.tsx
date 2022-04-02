@@ -16,6 +16,7 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
 import SendMoneyScreen from '../screens/SendMoneyScreen';
+import AirtimeScreen from '../screens/AirtimeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -44,6 +45,14 @@ function RootNavigator() {
       <Stack.Screen
         name="SendMoney"
         component={SendMoneyScreen}
+        options={{
+          headerShadowVisible: false,
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Airtime"
+        component={AirtimeScreen}
         options={{
           headerShadowVisible: false,
           headerShown: false,

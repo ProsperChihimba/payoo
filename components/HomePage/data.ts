@@ -6,7 +6,8 @@ const icons = [
         iconSize: 24,
         iconColor: '#32a7e2',
         backgroundColor: '#c7e1ee',
-        title: 'Transfer'
+        title: 'Transfer',
+        navigationName: 'SendMoney',
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ const icons = [
         iconSize: 22,
         iconColor: '#b548c6',
         backgroundColor: '#f1dcf5',
-        title: 'Airtime'
+        title: 'Airtime',
+        navigationName: 'Airtime',
     },
     {
         id: 3,
@@ -24,7 +26,8 @@ const icons = [
         iconSize: 21,
         iconColor: '#ff8700',
         backgroundColor: '#f6e0c7',
-        title: 'Bill'
+        title: 'Bill',
+        navigationName: 'SendMoney',
     },
     {
         id: 4,
@@ -33,7 +36,8 @@ const icons = [
         iconSize: 24,
         iconColor: '#22b07d',
         backgroundColor: '#c9efe1',
-        title: 'More'
+        title: 'More',
+        navigationName: 'SendMoney',
     }
 ]
 
@@ -73,8 +77,8 @@ const transactions = [
         id: 4,
         spendType: 'Gym day',
         date: '9 Nov, 21',
-        amount: annie,
-        iconName: 'barbell-sharp',
+        amount: 'Tsh 3000',
+        iconName: annie,
         iconColor: '#22b07d',
         from: 'Mall',
     },

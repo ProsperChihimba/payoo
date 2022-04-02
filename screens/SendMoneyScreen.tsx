@@ -67,76 +67,120 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             <View style={styles.inputField}>
 
                 <View style={styles.firstRow}>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '1')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>1</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '2')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>2</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '3')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63' }}>3</Text>
-                    </TouchableOpacity>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '1')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>1</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '2')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>2</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '3')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>3</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
                 </View>
+
 
                 <View style={styles.firstRow}>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '4')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>4</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '5')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>5</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '6')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63' }}>6</Text>
-                    </TouchableOpacity>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '4')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>4</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '5')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>5</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '6')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>6</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
                 </View>
+
 
                 <View style={styles.firstRow}>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '7')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>7</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '8')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>8</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '9')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63' }}>9</Text>
-                    </TouchableOpacity>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '7')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>7</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '8')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>8</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '9')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>9</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
                 </View>
+
 
                 <View style={styles.firstRow}>
-                    <TouchableOpacity>
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>.</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => setAmount(amount + '0')}
-                    >
-                        <Text style={{ fontSize: 40, color: '#2c2c63', marginRight: 90 }}>0</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => clearAmount()}
-                    >
-                        {/* <Ionicons name="md-arrow-back-circle-outline" size={25} color="#2c2c63" /> */}
-                        <Text style={{ fontSize: 35, color: '#2c2c63' }}>x</Text>
-                    </TouchableOpacity>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>.</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{paddingRight: 90}}>
+                        <TouchableOpacity
+                            onPress={() => setAmount(amount + '0')}
+                        >
+                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>0</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{justifyContent: 'center'}}>
+                        <TouchableOpacity
+                            onPress={() => clearAmount()}
+                        >
+                            <Ionicons name="close-circle-outline" size={25} color="#2c2c63" />
+                        </TouchableOpacity>
+                    </View>
+                    
                 </View>
 
+                
             </View>
             
             <View style={{width: '100%', alignItems: 'center'}}>
@@ -163,11 +207,10 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             width: '100%',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            paddingLeft: 15,
-            paddingRight: 15,
-            paddingTop: 15,
+            paddingHorizontal: 15,
+            paddingTop: 10,
             paddingBottom: 8,
-            },
+        },
         headerContainer: {
             width: '100%',
             alignItems: 'center',
@@ -179,7 +222,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
         },
         receiverProfile: {
             flexDirection: 'row',
-            paddingVertical: 20,
+            paddingVertical: 15,
             width: '100%',
             alignItems: 'center',
             justifyContent: 'center',
@@ -212,6 +255,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
         },
         firstRow: {
             flexDirection: 'row',
+            justifyContent: 'space-between',
             paddingHorizontal: 30,
             marginBottom: 20,
         },
