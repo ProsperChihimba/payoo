@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     headText: {
         paddingLeft: 20,
-        fontSize: 13,
+        fontSize: 12,
         color: '#415352',
         paddingBottom: 15,
         paddingTop: 10,
@@ -19,8 +19,11 @@ const styles = StyleSheet.create({
         marginRight: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        height: 35,
-        width: 35,
+        height: 28,
+        width: 28,
+        backgroundColor: '#f3fbff',
+        borderColor: '#32a7e2',
+        borderRadius: 15,
     },
     bodySpend: {
         marginRight: 100,
@@ -35,8 +38,8 @@ const styles = StyleSheet.create({
         fontWeight: '900'
     },
     amountText: {
-        fontSize: 14,
-        color: '#000',
+        fontSize: 13,
+        color: '#2c2c63',
         fontWeight: 'bold'
     },
     dateText: {

@@ -38,8 +38,8 @@ const HeaderContent = () => {
                         borderRadius: 15,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        height: 50,
-                        width: 50,
+                        height: 45,
+                        width: 45,
                         backgroundColor: item.backgroundColor,
                     }}
                 >
@@ -57,27 +57,33 @@ const HeaderContent = () => {
 
             <View style={styles.cardContainer}>
                 <View>
-                    <View style={{ paddingTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
-                        <View style={{paddingLeft: 15, }}>
-                            <Text style={{fontWeight: 'bold', color: 'white'}}>USD</Text>
-                            <Text style={{paddingTop: 5, color: 'white'}}>$ 26500.00</Text>
-                        </View>
-                        <View style={{ marginRight: 15, justifyContent: 'center' }}>
-                            <Ionicons name="md-chevron-down-sharp" size={24} color="white"/>
+                    <View style={{ paddingTop: 20, justifyContent: 'center', flexDirection: 'row', }}>
+                        <View style={{ paddingLeft: 15, }}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                                <Text style={{ fontWeight: 'bold', color: '#2c2c63' }}>USD</Text>
+                                <Text style={{fontWeight: '500', color: '#415352', fontSize: 13,}}>TSH</Text>
+                            </View>
+                            <Text style={{paddingTop: 12, color: '#415352', fontWeight: 'bold'}}>$ 26500.00</Text>
                         </View>
                     </View>
-                    <View style={{paddingTop: 25, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <TouchableOpacity style={styles.button}>
-                            <View style={styles.buttonText}>
-                                <Ionicons name="ios-add-circle-sharp" size={20} color="white" style={{ paddingRight: 5 }} />
-                                <Text style={{ color: 'white', fontSize: 16}}>Add Money</Text>
+                    <View style={{paddingTop: 23, paddingHorizontal: 25, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <TouchableOpacity style={styles.buttonText}>
+                            <View style={styles.button}>
+                                <Ionicons name="ios-add" size={20} color="#32a7e2" style={{ }} />
                             </View>
+                            <Text style={{ color: '#415352', fontSize: 12, paddingTop: 5}}>Add Cash</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <View style={styles.buttonText}>
-                                <Ionicons name="ios-rocket-outline" size={20} color="white" style={{ paddingRight: 5 }} />
-                                <Text style={{ color: 'white', fontSize: 16}}>Send Money</Text>
+                        <TouchableOpacity style={styles.buttonText}>
+                            <View style={styles.button}>
+                                <Ionicons name="arrow-down" size={20} color="#32a7e2" style={{  }} />
                             </View>
+                            <Text style={{ color: '#415352', fontSize: 12, paddingTop: 5}}>Withdraw</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonText}>
+                            <View style={styles.button}>
+                                <Ionicons name="ios-rocket-outline" size={20} color="#32a7e2" style={{ }} />
+                            </View>
+                            <Text style={{ color: '#415352', fontSize: 12, paddingTop: 5}}>Send Cash</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

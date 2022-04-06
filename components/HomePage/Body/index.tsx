@@ -25,16 +25,22 @@ const Body = () => {
 
                     <View style={{flexDirection: 'row'}}>
                         <View style={styles.bodyIcon}>
-                            <Image source={item.iconName} style={{ width: 35, height: 35, borderRadius: 30,}} />
+                            <Feather name={item.iconName} size={15} color="#32a7e2" />
                         </View>
                         <View style={styles.bodySpend}>
-                            <Text style={styles.spendText}>{ item.spendType }</Text>
-                            <Text style={styles.dateText}>{item.date}</Text>
+                            <Text style={styles.amountText}>{item.amount}</Text>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={{ fontSize: 11, color: '#415352', fontWeight: 'bold' }}>{item.spendType} </Text>
+                                <Text style={styles.dateText}>- {item.date}</Text>
+                            </View>
                         </View>
                     </View>
 
-                    <View style={{ justifyContent: 'center' }}>
-                        <Text style={styles.amountText}>{item.amount}</Text>
+                    <View style={{ justifyContent: 'center'}}>
+                        <View style={{backgroundColor: '#c9efe1', borderRadius: 15, height: 23, width: 23, justifyContent: 'center', alignItems: 'center'}}>
+                            <Ionicons name="checkmark-sharp" size={15} color="#22b07d" />
+                        </View>
+                        
                     </View>
                 </View>
                 
@@ -54,7 +60,7 @@ const Body = () => {
         <View style={styles.container}>
 
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <View style={{backgroundColor: '#BECECF', height: 4, width: '20%', borderRadius: 25, marginTop: 5 }}>
+                <View style={{backgroundColor: '#BECECF', height: 7, width: '15%', borderRadius: 25, marginTop: 5 }}>
                 </View>
             </View>
 

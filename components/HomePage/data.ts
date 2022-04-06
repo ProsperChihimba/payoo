@@ -41,44 +41,40 @@ const icons = [
     }
 ]
 
-const sis = require('../../assets/images/sis.jpeg')
-const annie = require('../../assets/images/annie.jpg')
-const proc = require('../../assets/images/unnamed.jpg')
-
 const transactions = [
     {
         id: 1,
         spendType: 'Sister noa',
-        date: '9 Nov, 21',
+        date: '9 Nov, 2021',
         amount: 'Tsh 340000',
-        iconName: sis,
+        iconName: 'arrow-up-right',
         iconColor: '#22b07d',
         from: 'Emirates',
     },
     {
         id: 2,
         spendType: 'Annie',
-        date: '10 Nov, 21',
+        date: '10 Nov, 2021',
         amount: 'Tsh 50000',
-        iconName: annie,
+        iconName: 'arrow-up-right',
         iconColor: '#22b07d',
         from: 'M-Pesa',
     },
     {
         id: 3,
         spendType: 'young bro',
-        date: '19 Nov, 21',
+        date: '19 Nov, 2021',
         amount: 'Tsh 5000',
-        iconName: proc,
+        iconName: 'arrow-up-right',
         iconColor: '#22b07d',
         from: 'M-Pesa',
     },
     {
         id: 4,
         spendType: 'Gym day',
-        date: '9 Nov, 21',
+        date: '9 Nov, 2021',
         amount: 'Tsh 3000',
-        iconName: annie,
+        iconName: 'arrow-up-right',
         iconColor: '#22b07d',
         from: 'Mall',
     },
@@ -87,7 +83,7 @@ const transactions = [
         spendType: 'Shoes',
         date: '10 Nov, 2021',
         amount: '50000',
-        iconName: proc,
+        iconName: 'arrow-up-right',
         iconColor: '#22b07d',
         from: 'Mall',
     },

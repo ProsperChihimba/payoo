@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     iconsText: {
         textAlign: 'center',
         color: '#415352',
+        fontSize: 11,
         marginTop: 5,
     },
     shadow: {
@@ -34,22 +35,28 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     cardContainer: {
-        backgroundColor: '#18206F',
+        backgroundColor: '#fff',
         borderRadius: 15,
-        height: 140,
+        borderColor: 'lightgray',
+        borderWidth: 1,
+        height: 170,
         width: '100%',
     },
     button: {
-        backgroundColor: '#32a7e2',
-        borderRadius: 12,
-        flexDirection: 'row',
+        backgroundColor: '#c7e1ee',
+        borderColor: '#32a7e2',
+        borderWidth: 1.5,
+        borderRadius: 15,
+        width: 30,
+        height: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     buttonText: {
         paddingHorizontal: 12,
         paddingVertical: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 })
 
