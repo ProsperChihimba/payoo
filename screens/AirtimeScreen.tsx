@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
@@ -31,7 +32,31 @@ export default function AirtimeScreen({ navigation }: RootTabScreenProps<'Home'>
         });
         const content = await response.json();
 
-        console.warn(content);
+
+        // if (content.Status === 'Missing Parameter') {
+        //     showMessage({
+        //         message: "There were an issue buying airtime",
+        //         type: "danger",
+        //         color: "#000",
+        //         textStyle: {fontWeight: 'bold'},
+        //         style: { paddingTop: 30 },
+        //     });
+        // }
+
+        console.log(content)
+
+        // if (content.code === 200) {
+        //     console.warn(content.code)
+        //     showMessage({
+        //         message: "Successful bought airtime, check your phone",
+        //         type: 'success',
+        //         color: "#000",
+        //         textStyle: {fontWeight: 'bold'},
+        //         style: { paddingTop: 30 },
+        //     });
+        //     setAmount('');
+        //     setNumber('');
+        // }
         
     } catch (error) {
         console.log(error)
@@ -40,7 +65,14 @@ export default function AirtimeScreen({ navigation }: RootTabScreenProps<'Home'>
 
     const sendRequest = () => {
         if (parseInt(amount) < 500) {
-            console.warn('Low amount')
+            showMessage({
+                message: "Amount should be greater than 400",
+                type: "warning",
+                backgroundColor: '#ffc12e',
+                color: "#000",
+                textStyle: {fontWeight: 'bold'},
+                style: { paddingTop: 30 },
+            });
             return
         } else {
             const data = {
