@@ -17,6 +17,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
 import SendMoneyScreen from '../screens/SendMoneyScreen';
 import AirtimeScreen from '../screens/AirtimeScreen';
+import CardScreen from '../screens/CardScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -95,11 +96,13 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="Payments"
-        component={TabTwoScreen}
+        name="Cards"
+        component={CardScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <Entypo name="grid" color={color} size={ 25 }/>,
+          headerShadowVisible: false,
+          headerShown: false,
+          title: 'Virtual Card',
+          tabBarIcon: ({ color }) => <Ionicons name="ios-card" color={color} size={ 23 }/>,
         }}
       />
       <BottomTab.Screen

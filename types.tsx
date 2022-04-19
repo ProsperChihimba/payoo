@@ -19,6 +19,7 @@ export type RootStackParamList = {
   NotFound: undefined;
   SendMoney: undefined;
   Airtime: undefined;
+  Card: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -28,7 +29,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
 
 export type RootTabParamList = {
   Home: undefined;
-  Payments: undefined;
+  Cards: undefined;
   Charts: undefined;
   Setting: undefined;
 };
