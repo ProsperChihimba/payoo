@@ -5,12 +5,13 @@ import { Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
 
-const avatar = require('../assets/images/pp.jpg');
+const avatar = require('../assets/images/unnamed.jpg');
 const { width, height } = Dimensions.get("window")
     
 
@@ -27,6 +28,15 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
         const newAmount = amount.substring(0, amountLength - 1);
 
         setAmount(newAmount);
+    }
+
+    let [fontsLoaded] = useFonts({
+        'Gilroy-ExtraBold': require('../assets/fonts/Gilroy-ExtraBold.otf'),
+        'Gilroy-Light': require('../assets/fonts/Gilroy-Light.otf'),
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
     }
 
     
@@ -51,8 +61,8 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
                     <View style={styles.profileContainer}>
                         <Image source={avatar} style={{ width: 45, height: 45, borderRadius: 45, marginRight: 15, marginLeft: 15, }} />
                         <View style={styles.profileText}>
-                            <Text style={{fontWeight: 'bold'}}>Annie</Text>
-                            <Text style={{paddingTop: 5, color: '#415352'}}>M-Pesa - 255627966485</Text>
+                            <Text style={{fontFamily: 'Gilroy-ExtraBold',}}>Proc</Text>
+                            <Text style={{paddingTop: 5, color: '#415352', fontFamily: 'Gilroy-Light',}}>M-Pesa - 255627966485</Text>
                         </View>
                         <Ionicons name="md-chevron-down-sharp" size={24} color="#2c2c63" style={{ marginRight: 15 }}/>
                     </View>
@@ -68,19 +78,19 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
 
                 <View style={styles.firstRow}>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '1')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>1</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>1</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '2')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>2</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>2</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -88,7 +98,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '3')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>3</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>3</Text>
                         </TouchableOpacity>
                     </View>
                     
@@ -97,19 +107,19 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
 
                 <View style={styles.firstRow}>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '4')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>4</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>4</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '5')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>5</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>5</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -117,7 +127,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '6')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>6</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>6</Text>
                         </TouchableOpacity>
                     </View>
                     
@@ -126,19 +136,19 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
 
                 <View style={styles.firstRow}>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '7')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>7</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>7</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '8')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>8</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>8</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -146,7 +156,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '9')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>9</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>9</Text>
                         </TouchableOpacity>
                     </View>
                     
@@ -155,18 +165,18 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
 
                 <View style={styles.firstRow}>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>.</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>.</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{paddingRight: 90}}>
+                    <View style={{paddingRight: 100}}>
                         <TouchableOpacity
                             onPress={() => setAmount(amount + '0')}
                         >
-                            <Text style={{ fontSize: 40, color: '#2c2c63' }}>0</Text>
+                            <Text style={{ fontFamily: 'Gilroy-ExtraBold',fontSize: 40, color: '#2c2c63' }}>0</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -174,7 +184,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
                         <TouchableOpacity
                             onPress={() => clearAmount()}
                         >
-                            <Ionicons name="close-circle-outline" size={25} color="#2c2c63" />
+                            <Ionicons name="close-circle-outline" size={25} color="#2c2c63" style={{fontWeight: 'bold',}} />
                         </TouchableOpacity>
                     </View>
                     
@@ -187,7 +197,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
                 <TouchableOpacity style={styles.payButton}>
                     {/* <Ionicons name="md-arrow-forward-circle" size={20} color="white" style={{}} /> */}
                     <View style={{ backgroundColor: '#2c2c63', alignItems: 'center', justifyContent: 'center',}}>
-                        <Text style={{fontWeight: 'bold', color: 'white', textAlign: 'center'}}>Click To Send </Text>
+                        <Text style={{fontFamily: 'Gilroy-ExtraBold', color: 'white', textAlign: 'center', fontSize: 17}}>Click To Send </Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -219,6 +229,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             textAlign: 'center',
             color: '#415352',
             fontSize: 15,
+            fontFamily: 'Gilroy-ExtraBold',
         },
         receiverProfile: {
             flexDirection: 'row',
@@ -227,6 +238,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             alignItems: 'center',
             justifyContent: 'center',
             padding: 10,
+            
         },
         profileContainer: {
             flexDirection: 'row',
@@ -234,7 +246,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             justifyContent: 'center',
             backgroundColor: '#e3ebf5',
             borderRadius: 15,
-            height: 80,
+            height: 100,
             width: '90%',
         },
         profileText: {
@@ -245,10 +257,10 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             textAlign: 'center',
             fontSize: 30,
             color: '#2c2c63',
-            fontWeight: 'bold',
+            fontFamily: 'Gilroy-ExtraBold',
         },
         inputField: {
-            paddingTop: 15,
+            paddingTop: 30,
             width: '100%',
             alignItems: 'center',
             justifyContent: 'center',
@@ -257,7 +269,7 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             flexDirection: 'row',
             justifyContent: 'space-between',
             paddingHorizontal: 30,
-            marginBottom: 20,
+            marginBottom: 35,
         },
         payButton: {
             width: width * 0.7,
@@ -267,5 +279,6 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             borderRadius: 30,
             flexDirection: 'row',
             justifyContent: 'center',
+            height: 45
         }
 });

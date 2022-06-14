@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FlashMessage from "react-native-flash-message";
 import { ActivityIndicator } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';

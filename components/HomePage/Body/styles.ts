@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
     },
     headText: {
         paddingLeft: 20,
-        fontSize: 12,
+        fontSize: 15,
         color: '#415352',
         paddingBottom: 15,
         paddingTop: 10,
-        fontWeight: 'bold'
+        fontFamily: 'Gilroy-ExtraBold',
     },
     bodyIcon: {
         marginRight: 20,
@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
     amountText: {
         fontSize: 13,
         color: '#2c2c63',
-        fontWeight: 'bold'
+        fontFamily: 'Gilroy-ExtraBold',
     },
     dateText: {
         color: '#415352',
         fontSize: 10,
+        fontFamily: 'Gilroy-Light',
     }
 })
 

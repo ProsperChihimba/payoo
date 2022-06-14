@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import BottomSheet from '@gorhom/bottom-sheet';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import styles from "./styles";
 import appdata from "../data";
@@ -19,6 +20,7 @@ export type IconsProps = {
 const HeaderContent = () => {
 
     const navigation = useNavigation();
+    const bottomSheetRef = useRef(null);
 
     const onPress = ({navigationName}: {navigationName?: any}) => {
         navigation.navigate(navigationName);
@@ -98,6 +100,11 @@ const HeaderContent = () => {
                 renderItem={renderItem}
                 contentContainerStyle={{paddingVertical: 10}}
             />
+            <BottomSheet ref={bottomSheetRef} snapPoints={["12%", "95%"]}>
+                <View style={{ alignItems: 'center'}}>
+                    <Text style={{fontSize: 20, fontWeight: '600', letterSpacing: 0.2, paddingBottom: 5}}>Your online</Text>
+                </View>
+            </BottomSheet>
         </View>
     )
 }

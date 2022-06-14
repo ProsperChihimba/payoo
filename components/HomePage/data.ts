@@ -69,24 +69,6 @@ const transactions = [
         iconColor: '#22b07d',
         from: 'M-Pesa',
     },
-    {
-        id: 4,
-        spendType: 'Gym day',
-        date: '9 Nov, 2021',
-        amount: 'Tsh 3000',
-        iconName: 'arrow-up-right',
-        iconColor: '#22b07d',
-        from: 'Mall',
-    },
-    {
-        id: 5,
-        spendType: 'Shoes',
-        date: '10 Nov, 2021',
-        amount: '50000',
-        iconName: 'arrow-up-right',
-        iconColor: '#22b07d',
-        from: 'Mall',
-    },
 ]
 
 const appdata = {

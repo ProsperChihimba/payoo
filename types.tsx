@@ -20,6 +20,7 @@ export type RootStackParamList = {
   SendMoney: undefined;
   Airtime: undefined;
   Card: undefined;
+  Welcome: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

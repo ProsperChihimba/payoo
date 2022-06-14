@@ -30,7 +30,7 @@ const Body = () => {
                         <View style={styles.bodySpend}>
                             <Text style={styles.amountText}>{item.amount}</Text>
                             <View style={{flexDirection: 'row'}}>
-                                <Text style={{ fontSize: 11, color: '#415352', fontWeight: 'bold' }}>{item.spendType} </Text>
+                                <Text style={{ fontSize: 11, color: '#415352', fontFamily: 'Gilroy-ExtraBold', }}>{item.spendType} </Text>
                                 <Text style={styles.dateText}>- {item.date}</Text>
                             </View>
                         </View>

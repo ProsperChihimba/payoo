@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         color: '#415352',
         fontSize: 11,
         marginTop: 5,
+        fontFamily: 'Gilroy-Light',
     },
     shadow: {
     shadowColor: '#000',
@@ -58,6 +59,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    payButton: {
+            width: '90%',
+            height: 50,
+            padding: 10,
+            backgroundColor: '#2c2c63',
+            borderRadius: 30,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+    },
+    headerContainer: {
+            width: '100%',
+            alignItems: 'center',
+            paddingTop: 15,
+        },
 })
 
 export default styles;

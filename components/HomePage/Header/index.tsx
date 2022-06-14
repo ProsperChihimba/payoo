@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons, Entypo, EvilIcons } from '@expo/vector-icons';
 
-const avatar = require('../../../assets/images/pp.jpg');
+const avatar = require('../../../assets/images/unnamed.jpg');
 
 const Header = () => {
     return (
@@ -20,8 +20,8 @@ const Header = () => {
                     <Image source={avatar} style={{ width: 30, height: 30, borderRadius: 30,}} />
                 </TouchableOpacity>
                 <View style={{  justifyContent: 'center'}}>
-                    <Text style={{ fontWeight: 'bold', color: '#2c2c63' }}>Hello, Annie</Text>
-                    <Text style={{color: '#415352', fontSize: 10}}>Love you</Text>
+                    <Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#2c2c63' }}>Hello, bleble</Text>
+                    <Text style={{color: '#415352', fontSize: 10, fontFamily: 'Gilroy-Light',}}>Welcome</Text>
                 </View>
             </View>
             <View style={{ justifyContent: 'center' }}>

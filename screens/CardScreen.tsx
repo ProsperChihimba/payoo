@@ -5,7 +5,8 @@ import { Pressable } from 'react-native';
 import { Ionicons, Fontisto  } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
@@ -74,6 +75,15 @@ const CardScreen = () => {
         navigation.navigate(navigationName);
     }
 
+    let [fontsLoaded] = useFonts({
+        'Gilroy-ExtraBold': require('../assets/fonts/Gilroy-ExtraBold.otf'),
+        'Gilroy-Light': require('../assets/fonts/Gilroy-Light.otf'),
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    }
+
     const renderItem = ({item}: {item: IconsProps}) => {
         return (
             <TouchableOpacity
@@ -81,7 +91,7 @@ const CardScreen = () => {
                     padding: 10,
                     marginRight: 5, 
                 }}
-                onPress={() => navigation.navigate(item.navigationName)}
+                // onPress={() => navigation.navigate(item.navigationName)}
             >
                 <View
                     style={{
@@ -95,7 +105,7 @@ const CardScreen = () => {
                 >
                     <Ionicons name={item.iconName} size={item.iconSize} color={item.iconColor} />
                 </View>
-                <Text style={{textAlign: 'center', color: '#415352', fontSize: 10.5, marginTop: 5,}} >
+                <Text style={{textAlign: 'center', color: '#415352', fontSize: 10.5, marginTop: 5, fontFamily: 'Gilroy-Light',}} >
                     {item.title}
                 </Text>
             </TouchableOpacity>
@@ -107,7 +117,7 @@ const CardScreen = () => {
         <SafeAreaView style={styles.container}>
 
             <View style={styles.headerText}>
-                <Text style={{ fontWeight: 'bold', color: '#000' }}>Virtual Card</Text>
+                <Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#000' }}>Virtual Card</Text>
             </View>
 
             <View style={styles.headerContainer}>
@@ -116,17 +126,17 @@ const CardScreen = () => {
                     <View style={styles.mainCardBody}>
                         <View style={{width: '85%', backgroundColor: '#07070A',  }}>
                             <View style={{ backgroundColor: '#07070A', flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Text style={{color: 'white'}}>$102.20</Text>
+                                <Text style={{fontFamily: 'Gilroy-Light',color: 'white'}}>Tsh 10200.20</Text>
                                 <Ionicons name="ios-radio" size={24} color="white" />
                             </View>
                             <View style={{ backgroundColor: '#07070A', paddingTop: 14 }}>
-                                <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>**************2966</Text>
+                                <Text style={{color: 'white', fontSize: 20, fontFamily: 'Gilroy-ExtraBold',}}>**************2966</Text>
                             </View>
                             <View style={{ backgroundColor: '#07070A', paddingTop: 13 }}>
-                                <Text style={{color: 'white', fontSize: 10}}>Exp 04/23</Text>
+                                <Text style={{color: 'white', fontSize: 10, fontFamily: 'Gilroy-Light',}}>Exp 04/23</Text>
                             </View>
                             <View style={{ backgroundColor: '#07070A', flexDirection: 'row', justifyContent: 'space-between', paddingTop: 9 }}>
-                                <Text style={{color: 'white', fontWeight: 'bold'}}>Shoket HQ</Text>
+                                <Text style={{color: 'white', fontFamily: 'Gilroy-ExtraBold',}}>Shoket HQ</Text>
                                 <Fontisto name="visa" size={20} color="#1A1F71" style={{backgroundColor: 'white'}} />
                             </View>
                         </View>
@@ -144,8 +154,8 @@ const CardScreen = () => {
                 />
 
                 <View style={{width: '85%', backgroundColor: '#f3f3f8', marginBottom: 10, justifyContent: 'space-between', flexDirection: 'row'}}>
-                    <Text style={{ fontWeight: 'bold', color: '#000' }}>Card Details</Text>
-                    <Text style={{color: '#415352', fontSize: 13 }}>Show</Text>
+                    <Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#000' }}>Card Details</Text>
+                    <Text style={{color: '#415352', fontSize: 13, fontFamily: 'Gilroy-Light', }}>Show</Text>
                 </View>
                 
                 <View style={{width: '85%', borderRadius: 15, marginBottom: 10}}>
@@ -158,7 +168,7 @@ const CardScreen = () => {
                         alignItems: 'center',
                         paddingHorizontal: 15,
                     }}>
-                        <Text style={{fontWeight: 'bold', fontSize: 13}}>**** **** **** 2966</Text>
+                        <Text style={{fontFamily: 'Gilroy-ExtraBold', fontSize: 15}}>**** **** **** 2966</Text>
                         <Ionicons name="ios-copy-outline" size={20} color="black" />
                     </View>
                 </View>
