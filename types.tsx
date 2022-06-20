@@ -21,6 +21,7 @@ export type RootStackParamList = {
   Airtime: undefined;
   Card: undefined;
   Welcome: undefined;
+  Login: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

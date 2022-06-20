@@ -37,7 +37,7 @@ export default function WelcomeScreen() {
                 <View style={{width: '60%', alignItems: 'center'}}>
                     <TouchableOpacity
                         style={styles.Button}
-                        onPress={() => navigation.navigate('Root')}
+                        onPress={() => navigation.navigate('Login')}
                     >
                         <Text style={{ fontWeight: 'bold', color: 'white', textAlign: 'center', fontFamily: 'Gilroy-ExtraBold' }}> Start </Text>
                     </TouchableOpacity>
