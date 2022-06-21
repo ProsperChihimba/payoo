@@ -12,8 +12,7 @@ export default function LoginPage({ navigation }: RootTabScreenProps<'Home'>) {
 
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
-    // const { isLoading, login } = useContext(AuthContext)
-    const [isLoading, setIsLoading] = useState(false)
+    const { isLoading, login } = useContext(AuthContext)
     
     return (
         <SafeAreaView style={styles.container}>
@@ -51,7 +50,7 @@ export default function LoginPage({ navigation }: RootTabScreenProps<'Home'>) {
                 <View style={{width: '90%', alignItems: 'center'}}>
                     <TouchableOpacity
                         style={styles.payButton}
-                        // onPress={() => login(email, password)}
+                        onPress={() => login(email, password)}
                     >
                         {isLoading === true ?  
                             (<ActivityIndicator size="small" color="#fff" />)

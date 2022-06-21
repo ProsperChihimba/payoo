@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FlashMessage from "react-native-flash-message";
+import { AuthProvider } from './context/AuthContext';
 import { ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -17,8 +18,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <FlashMessage position="top" /> 
+        <AuthProvider>
+          <Navigation colorScheme={colorScheme} />
+          <FlashMessage position="top" /> 
+        </AuthProvider>
         <StatusBar />
       </SafeAreaProvider>
     );

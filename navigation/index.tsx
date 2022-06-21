@@ -23,11 +23,15 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginPage from '../components/Login';
+import SplashScreen from '../screens/SplashScreen';
+import { AuthContext } from '../context/AuthContext';
+import { navigationRef } from '../RootNavigation';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
+      ref={navigationRef}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <RootNavigator />
     </NavigationContainer>
@@ -41,10 +45,14 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  const { userInfo, splashLoading } = React.useContext(AuthContext)
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Login" component={LoginPage} options={{ headerShown: false }} />
+      {splashLoading ? 
+        (<Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />)
+        : userInfo.message === 'Login success' ?
+        (
+          <>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen
@@ -66,6 +74,16 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
+      </>
+      ) 
+      : 
+      (
+        <>
+          <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={LoginPage} options={{ headerShown: false }} />
+        </>
+      )
+      }
       
     </Stack.Navigator>
   );

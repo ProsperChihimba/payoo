@@ -22,6 +22,7 @@ export type RootStackParamList = {
   Card: undefined;
   Welcome: undefined;
   Login: undefined;
+  Splash: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

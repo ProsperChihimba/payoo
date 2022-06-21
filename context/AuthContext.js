@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
                 email_address: email,
                 password: password,
             },
-            rule: "all",
+            type: "all",
             sign_type: "login"
         }).then(res => {
             let userInfo = res.data;
