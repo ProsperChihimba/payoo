@@ -69,6 +69,16 @@ const styles = StyleSheet.create({
             justifyContent: 'center',
             alignItems: 'center',
     },
+    payButton2: {
+            width: '90%',
+            height: 50,
+            padding: 10,
+            backgroundColor: '#c9efe1',
+            borderRadius: 30,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+    },
     headerContainer: {
             width: '100%',
             alignItems: 'center',

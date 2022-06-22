@@ -26,6 +26,8 @@ import LoginPage from '../components/Login';
 import SplashScreen from '../screens/SplashScreen';
 import { AuthContext } from '../context/AuthContext';
 import { navigationRef } from '../RootNavigation';
+import RecepeintScreen from '../screens/RecepeintScreen';
+import PaymentScreen from '../screens/PaymentDetails';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -56,6 +58,14 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen
+        name="Recepeint"
+        component={RecepeintScreen}
+        options={{
+          headerShadowVisible: false,
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="SendMoney"
         component={SendMoneyScreen}
         options={{
@@ -66,6 +76,14 @@ function RootNavigator() {
       <Stack.Screen
         name="Airtime"
         component={AirtimeScreen}
+        options={{
+          headerShadowVisible: false,
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Payment"
+        component={PaymentScreen}
         options={{
           headerShadowVisible: false,
           headerShown: false,

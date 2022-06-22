@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons, Entypo, EvilIcons } from '@expo/vector-icons';
+import { AuthContext } from "../../../context/AuthContext";
+import { useNavigation } from "@react-navigation/native";
 
 const avatar = require('../../../assets/images/unnamed.jpg');
 
 const Header = () => {
+    const navigation = useNavigation();
+    const { userInfo, logout } = useContext(AuthContext);
     return (
         <View style={{ flexDirection: 'row', height: 50, justifyContent: 'space-between' }}>
             <View style={{ flexDirection: 'row'}}>
@@ -20,7 +24,7 @@ const Header = () => {
                     <Image source={avatar} style={{ width: 30, height: 30, borderRadius: 30,}} />
                 </TouchableOpacity>
                 <View style={{  justifyContent: 'center'}}>
-                    <Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#2c2c63' }}>Hello, bleble</Text>
+                    <Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#2c2c63' }}>Hello, {userInfo.user.first_name}</Text>
                     <Text style={{color: '#415352', fontSize: 10, fontFamily: 'Gilroy-Light',}}>Welcome</Text>
                 </View>
             </View>

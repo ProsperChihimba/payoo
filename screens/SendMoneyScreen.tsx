@@ -2,26 +2,27 @@ import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, Image, TouchableOpacity, Dimensions} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5, FontAwesome, Foundation   } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import SelectDropdown from 'react-native-select-dropdown';
 
 
 const avatar = require('../assets/images/unnamed.jpg');
 const { width, height } = Dimensions.get("window")
     
 
-export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home'>) {
+export default function SendMoneyScreen({ navigation, route }: RootTabScreenProps<'Home'>) {
 
     const [amount, setAmount] = useState('');
+    const { country } = route.params;
 
-    const onPostPay = () => {
-
-    }
+    const carTypes = ["USD", "TZS", "USDT", "BTC", "ETH"];
+    const [coin, setCoin] = useState("TZS")
 
     const clearAmount = () => {
         const amountLength = amount.length;
@@ -55,16 +56,65 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
 
             <View style={styles.headerContainer}>
 
-                <Text style={styles.textTitle}>Send Money</Text>
+                <Text style={styles.textTitle}>Send Money { country }</Text>
 
                 <View style={styles.receiverProfile}>
                     <View style={styles.profileContainer}>
-                        <Image source={avatar} style={{ width: 45, height: 45, borderRadius: 45, marginRight: 15, marginLeft: 15, }} />
+                        {coin === "TZS" || "USD" || "USDT" ? coin === "BTC" ? 
+                            <FontAwesome5 name="bitcoin" size={45} color="#2c2c63" style={{ borderRadius: 45, marginRight: 15, marginLeft: 15, }} />
+                            :
+                            <Foundation name="dollar" size={45} color="#2c2c63" style={{ borderRadius: 45, marginRight: 15, marginLeft: 15, }} />
+                            :
+                            <FontAwesome5 name="ethereum" size={24} color="black" />
+                        }
                         <View style={styles.profileText}>
-                            <Text style={{fontFamily: 'Gilroy-ExtraBold',}}>Proc</Text>
-                            <Text style={{paddingTop: 5, color: '#415352', fontFamily: 'Gilroy-Light',}}>M-Pesa - 255627966485</Text>
+                            
+                            <Text style={{ paddingTop: 5, color: '#415352', fontFamily: 'Gilroy-Light', }}>Choose payment type</Text>
+                            {/* <Text style={{fontFamily: 'Gilroy-ExtraBold',}}>Bitcoin</Text> */}
+                            <SelectDropdown
+                        data={carTypes}
+                            onSelect={(selectedItem, index) => {
+                                if (index === 0) {
+                                    setCoin("USD")
+                                } else if (index === 1) {
+                                    setCoin("TZS")
+                                } else if (index === 2) {
+                                    setCoin("USDT")
+                                } else if (index === 3) {
+                                    setCoin("BTC")
+                                } else if (index === 4) {
+                                    setCoin("ETH")
+                                }
+                                
+                            }}
+
+                        defaultButtonText={'TZS'}
+
+                        buttonTextAfterSelection={(selectedItem, index) => {
+                            return selectedItem;
+                        }}
+
+                        rowTextForSelection={(item, index) => {
+                            return item;
+                        }}
+
+                        buttonStyle={styles.dropdown1BtnStyle}
+
+                        buttonTextStyle={styles.dropdown1BtnTxtStyle}
+
+                        renderDropdownIcon={isOpened => {
+                            return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#2c2c63'} size={15} />;
+                        }}
+                        dropdownIconPosition={'right'}
+
+                        dropdownStyle={styles.dropdown1DropdownStyle}
+
+                        rowStyle={styles.dropdown1RowStyle}
+
+                        rowTextStyle={styles.dropdown1RowTxtStyle}
+                    />
                         </View>
-                        <Ionicons name="md-chevron-down-sharp" size={24} color="#2c2c63" style={{ marginRight: 15 }}/>
+                        {/* <Ionicons name="md-chevron-down-sharp" size={24} color="#2c2c63" style={{ marginRight: 15 }}/> */}
                     </View>
                 </View>
 
@@ -194,10 +244,17 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             </View>
             
             <View style={{width: '100%', alignItems: 'center'}}>
-                <TouchableOpacity style={styles.payButton}>
+                <TouchableOpacity
+                    style={styles.payButton}
+                    onPress={() => navigation.navigate("Recepeint", {
+                        amount: amount,
+                        coin: coin,
+                        country: country
+                    })}
+                >
                     {/* <Ionicons name="md-arrow-forward-circle" size={20} color="white" style={{}} /> */}
                     <View style={{ backgroundColor: '#2c2c63', alignItems: 'center', justifyContent: 'center',}}>
-                        <Text style={{fontFamily: 'Gilroy-ExtraBold', color: 'white', textAlign: 'center', fontSize: 17}}>Click To Send </Text>
+                        <Text style={{fontFamily: 'Gilroy-ExtraBold', color: 'white', textAlign: 'center', fontSize: 17}}>Continue </Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -280,5 +337,32 @@ export default function SendMoneyScreen({ navigation }: RootTabScreenProps<'Home
             flexDirection: 'row',
             justifyContent: 'center',
             height: 45
-        }
+        },
+
+
+        dropdown1BtnStyle: {
+            // width: '10%',
+            // height: 50,
+            backgroundColor: '#e3ebf5',
+        },
+        dropdown1BtnTxtStyle: {
+            color: '#2c2c63',
+            textAlign: 'left',
+            fontFamily: 'Gilroy-ExtraBold',
+            fontSize: 14
+        },
+        dropdown1DropdownStyle: {
+            backgroundColor: '#EFEFEF',
+            borderRadius: 10,
+        },
+        dropdown1RowStyle: {
+            backgroundColor: '#EFEFEF',
+            borderBottomColor: '#C5C5C5'
+        },
+        dropdown1RowTxtStyle: {
+            color: '#444',
+            textAlign: 'center',
+            fontFamily: 'Gilroy-Light',
+            fontSize: 15
+        },
 });

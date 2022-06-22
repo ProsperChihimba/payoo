@@ -29,6 +29,7 @@ const HomePage = () => {
     const navigation = useNavigation();
     const bottomSheetRef = useRef(null);
     const [open, setOpen] = useState(false);
+    const [sendCashOpen, setSendCashOpen] = useState(false)
     const [word, setWord] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [phone, setPhone] = useState(null);
@@ -158,7 +159,7 @@ const HomePage = () => {
                             <Text style={{ color: '#415352', fontSize: 12, fontFamily: 'Gilroy-Light', paddingTop: 5}}>Withdraw</Text>
                         </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => navigation.navigate("SendMoney")}
+                                onPress={() => (setSendCashOpen(true), setWord("Withdraw"))}
                                 style={styles.buttonText}>
                             <View style={styles.button}>
                                 <Ionicons name="ios-rocket-outline" size={20} color="#32a7e2" style={{ }} />
@@ -224,6 +225,41 @@ const HomePage = () => {
                                 }
                     </TouchableOpacity>
                         </View>
+                </View>
+            </BottomSheet>) : <></>
+            }
+            {sendCashOpen ? (
+            <BottomSheet ref={bottomSheetRef} snapPoints={["70%", "95%"]} >
+                <View style={styles.headerContainer}>
+                    <View style={{ alignItems: 'center'}}>
+                        <Text style={{fontSize: 18, fontFamily: 'Gilroy-ExtraBold', letterSpacing: 0.2, paddingBottom: 50}}>Choose country</Text>
+                    </View>
+
+                    <View style={{width: '80%', alignItems: 'center', paddingBottom: 30}}>
+                        <TouchableOpacity
+                                style={styles.payButton2}
+                                onPress={() => (navigation.navigate("SendMoney", {country: "Tanzania"}), setSendCashOpen(false))}
+                            >
+                                {isLoading === true ?
+                                    (<ActivityIndicator size="small" color="#fff" />)
+                                    :
+                                    (<Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#2c2c63', textAlign: 'center' }}>Tanzania</Text>)
+                                }
+                        </TouchableOpacity>
+                    </View>
+                    
+                    <View style={{width: '80%', alignItems: 'center'}}>
+                        <TouchableOpacity
+                                style={styles.payButton2}
+                                onPress={() => (navigation.navigate("SendMoney", {country: "Nigeria"}), setSendCashOpen(false))}
+                            >
+                                {isLoading === true ?
+                                    (<ActivityIndicator size="small" color="#fff" />)
+                                    :
+                                    (<Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#2c2c63', textAlign: 'center' }}>Nigeria</Text>)
+                                }
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </BottomSheet>) : <></>
         }
