@@ -11,7 +11,12 @@ export const AuthProvider = ({ children }) => {
 
     const [userInfo, setUserInfo] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingBalance, setIsLoadingBalance] = useState(false);
+    const [isLoadingTransactions, setIsLoadingTransactions] = useState(false);
     const [splashLoading, setSplashLoading] = useState(false)
+    const [balance, setBalance] = useState("0")
+    const [transactionsData, setTransactionsData] = useState([])
+    const [rates, setRates] = useState({})
 
     const login = (email, password) => {
         setIsLoading(true)
@@ -115,6 +120,52 @@ export const AuthProvider = ({ children }) => {
         })
     }
 
+    const getBalance = (id) => {
+        setIsLoadingBalance(true)
+        axios.post(`${BASE_URL}/user/balance/`, {
+            id: id.toString()
+        },
+        {
+            headers: headers
+        }).then(res => {
+            let resp = res.data;
+            setBalance(resp.balance)
+            setIsLoadingBalance(false)
+        }).catch(e => {
+            console.log(e)
+            setIsLoadingBalance(false)
+        })
+    }
+
+    const getTransactions = (id) => {
+        setIsLoadingTransactions(true)
+        axios.post(`${BASE_URL}/transactions/`, {
+            id: id.toString()
+        },
+        {
+            headers: headers
+        }).then(res => {
+            let resp = res.data;
+            if (resp.transactions) {
+                setTransactionsData(resp.transactions)
+            }
+            setIsLoadingTransactions(false)
+        }).catch(e => {
+            console.log(e)
+            setIsLoadingTransactions(false)
+        })
+    }
+
+    // async function getRates() {
+    //     try {
+    //         const response = await axios.get(`${BASE_URL}/rates/`);
+    //         setRates(response.data)
+    //         AsyncStorage.setItem('rates', JSON.stringify(rates))
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
     const isLoggedIn = async () => {
         try {
             setSplashLoading(true)
@@ -124,6 +175,10 @@ export const AuthProvider = ({ children }) => {
 
             if (userInfo) {
                 setUserInfo(userInfo)
+                getBalance(userInfo.user.id)
+                getTransactions(userInfo.user.id)
+                const response = await axios.get(`${BASE_URL}/rates/`);
+                setRates(response.data)
             }
 
             setSplashLoading(false);
@@ -138,12 +193,18 @@ export const AuthProvider = ({ children }) => {
         setUserInfo({});
     }
 
+    const headers = {
+    'Content-Type': 'application/json'
+    }
+
+
     useEffect(() => {
         isLoggedIn();
     }, []);
 
+
     return (
-        <AuthContext.Provider value={{isLoading, userInfo, splashLoading, login, logout, register, otp}} >
+        <AuthContext.Provider value={{isLoading, userInfo, splashLoading, login, logout, register, otp, balance, isLoadingBalance, isLoadingTransactions, transactionsData, rates}} >
             {children}
         </AuthContext.Provider>
     )

@@ -7,6 +7,9 @@ import { AuthContext } from '../context/AuthContext';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Ionicons, FontAwesome5, FontAwesome, Foundation } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
+import { BASE_URL } from "../config";
+import axios from 'axios';
+import { addressNavigate } from "../RootNavigation";
     
 // const logo = require('../../../assets/images/logo4.png');
 
@@ -17,9 +20,47 @@ export default function RecepeintScreen({ navigation, route }: RootTabScreenProp
     const [email, setEmail] = useState(null)
     const [name, setName] = useState(null)
     const [number, setNumber] = useState(null)
-    const { isLoading, login } = useContext(AuthContext)
+    const [isLoading, setIsLoading] = useState(false);
     const [provider, setProvider] = useState("")
     const { amount, coin, country } = route.params;
+
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+
+    const sendRequest = () => {
+        setIsLoading(true)
+        axios.post(`${BASE_URL}/payment/`, {
+            payment_method: "Crypto",
+            amount: "5000", 
+            sender_currency: "TZS",
+            receiver_currency: "TZS",
+            currency_rate: "2325",
+            withdraw_type: "Mobile_Money",
+            sender: {
+                first_name: "Proc",
+                last_name: "Absa",
+                email_address: "proc@gmail.com",
+                phone_number: "0627966485"
+            },
+            receiver: {
+                email_address: "pros@gmail.com",
+                mobile_number: "0627966485",
+                provider: "Vodacom"
+            },
+            network_type: "ERC20"
+        },
+        {
+            headers: headers
+        }).then(res => {
+            let resp = res.data;
+            setIsLoading(false)
+            addressNavigate(amount,coin,country,res.data.cypto_token);
+        }).catch(e => {
+            console.log(e)
+            setIsLoading(false)
+        })
+    }
     
     return (
         <SafeAreaView style={styles.container}>
@@ -137,15 +178,7 @@ export default function RecepeintScreen({ navigation, route }: RootTabScreenProp
                     <View style={{width: '90%', alignItems: 'center'}}>
                         <TouchableOpacity
                             style={styles.payButton}
-                            onPress={() => navigation.navigate("Payment", {
-                                amount: amount,
-                                coin: coin,
-                                country: country,
-                                email: email,
-                                name: name,
-                                provider: provider,
-                                number: number
-                            })}
+                            onPress={() => sendRequest()}
                         >
                             {isLoading === true ?  
                                 (<ActivityIndicator size="small" color="#fff" />)

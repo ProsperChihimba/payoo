@@ -1,21 +1,25 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, ScrollView, FlatList, Image } from "react-native";
-import { Feather, Ionicons, Entypo, MaterialCommunityIcons  } from '@expo/vector-icons';
+import { Feather, Ionicons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AuthContext } from "../../../context/AuthContext";
 
 import styles from "./styles";
 import appdata from "../data";
 
 export type TransactionProps = {
-    id: number,
-    spendType: string,
-    date: string,
     amount: string,
-    iconName: string,
-    iconColor: string,
-    from?: string,
+    date: string,
+    message: string,
+    payment_method: string,
+    reference: string,
+    transaction_type: string,
 } 
 
+const empty = require('../../../assets/images/empty.png');
+
 const Body = () => {
+
+    const { isLoadingTransactions, transactionsData } = useContext(AuthContext);
 
     const renderItem = ({ item }: { item: TransactionProps }) => {
         return (
@@ -25,12 +29,17 @@ const Body = () => {
 
                     <View style={{flexDirection: 'row'}}>
                         <View style={styles.bodyIcon}>
-                            <Feather name={item.iconName} size={15} color="#32a7e2" />
+                            {item.transaction_type === "Deposit" ? 
+                                <Feather name="arrow-down-right" size={15} color="#32a7e2" />
+                                :
+                                <Feather name="arrow-up-right" size={15} color="#32a7e2" />
+                            }
+                            
                         </View>
                         <View style={styles.bodySpend}>
-                            <Text style={styles.amountText}>{item.amount}</Text>
+                            <Text style={styles.amountText}>Tsh {item.amount}</Text>
                             <View style={{flexDirection: 'row'}}>
-                                <Text style={{ fontSize: 11, color: '#415352', fontFamily: 'Gilroy-ExtraBold', }}>{item.spendType} </Text>
+                                <Text style={{ fontSize: 11, color: '#415352', fontFamily: 'Gilroy-ExtraBold', }}>{item.message}</Text>
                                 <Text style={styles.dateText}>- {item.date}</Text>
                             </View>
                         </View>
@@ -50,8 +59,9 @@ const Body = () => {
 
     const myListEmpty = () => {
         return (
-            <View style={{ alignItems:"center" }}>
-                <Text>No data found</Text>
+            <View style={{ alignItems:"center", width: '80%', justifyContent: 'center', alignSelf: 'center' }}>
+                <Text style={{fontFamily: 'Gilroy-Light', paddingBottom: 30, paddingTop: 15, fontSize: 15}}>You haven't made any transaction</Text>
+                <Image source={empty} style={{ width: 170, height: 150,}} />
             </View>
         );
         };
@@ -67,8 +77,8 @@ const Body = () => {
             <Text style={styles.headText}>Transaction History</Text>
 
                 <FlatList
-                    data={appdata.transactions}
-                    keyExtractor={item => `${item.id}`}
+                    data={transactionsData}
+                    keyExtractor={item => `${item.reference}`}
                     renderItem={renderItem}
                     ListEmptyComponent={myListEmpty}
                     contentContainerStyle={{

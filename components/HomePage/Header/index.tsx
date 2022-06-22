@@ -29,7 +29,9 @@ const Header = () => {
                 </View>
             </View>
             <View style={{ justifyContent: 'center' }}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={logout}
+                >
                     <Ionicons name="notifications" size={24} color="#2c2c63" style={{paddingRight: 15}} />
                 </TouchableOpacity>
                 

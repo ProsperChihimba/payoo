@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, FlatList, TextInput, ActivityIndicator  } from "react-native";
 import axios from 'axios';
 import BottomSheet from '@gorhom/bottom-sheet';
@@ -12,6 +12,8 @@ import Body from "./Body";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { showMessage, hideMessage } from "react-native-flash-message";
+import { BASE_URL } from "../../config";
+import { AuthContext } from "../../context/AuthContext";
 
 export type IconsProps = {
     id: number,
@@ -25,6 +27,8 @@ export type IconsProps = {
 } 
 
 const HomePage = () => {
+
+    const { isLoadingBalance, balance, userInfo } = useContext(AuthContext);
 
     const navigation = useNavigation();
     const bottomSheetRef = useRef(null);
@@ -40,27 +44,27 @@ const HomePage = () => {
     }  
 
     const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer sk_test_UzvLfTeZmCcMTk'
+        'Content-Type': 'application/json'
     }
 
     const sendRequest = () => {
         setIsLoading(true)
         console.log(amount, phone)
-        axios.post("https://api.shoket.co/v1/charge/", {
+        axios.post(`${BASE_URL}/payment/mobile/`, {
             amount: amount,
             customer_name: "John Doe",
             email: "john@user.com",
             number_used: phone,
-            channel: "Tigo"
+            channel: "Tigo",
+            user_id: userInfo.user.id.toString()
         },
         {
-                headers: headers
+            headers: headers
         }).then(res => {
             let resp = res.data;
             setIsLoading(false)
             showMessage({
-                message: resp.message,
+                message: "Wallet push sent to your mobile phone",
                 type: "success",
                 backgroundColor: '#E8FFFC',
                 color: "#000",
@@ -86,6 +90,7 @@ const HomePage = () => {
         })
     }
 
+
     let [fontsLoaded] = useFonts({
         'Gilroy-ExtraBold': require('../../assets/fonts/Gilroy-ExtraBold.otf'),
         'Gilroy-Light': require('../../assets/fonts/Gilroy-Light.otf'),
@@ -94,6 +99,7 @@ const HomePage = () => {
     if (!fontsLoaded) {
         return <AppLoading />;
     }
+
 
     const renderItem = ({item}: {item: IconsProps}) => {
         return (
@@ -135,8 +141,12 @@ const HomePage = () => {
                         <View style={{ paddingLeft: 15, }}>
                             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                                 <Text style={{ fontFamily: 'Gilroy-ExtraBold', color: '#2c2c63' }}>TSH</Text>
-                            </View>
-                            <Text style={{paddingTop: 12, color: '#415352', fontFamily: 'Gilroy-ExtraBold',}}> 26500.00</Text>
+                                </View>
+                                {isLoadingBalance === true ?
+                                    (<ActivityIndicator size="small" color="#32a7e2" style={{paddingTop: 12}} />)
+                                    :
+                                    (<Text style={{paddingTop: 12, color: '#415352', fontFamily: 'Gilroy-ExtraBold',}}> {balance}.00</Text>)
+                                }
                         </View>
                     </View>
                     <View style={{paddingTop: 23, paddingHorizontal: 25, flexDirection: 'row', justifyContent: 'space-between' }}>

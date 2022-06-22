@@ -20,4 +20,10 @@ export function OtpNavigate() {
     }
 }
 
+export function addressNavigate(amount,coin,country,address) {
+    if (navigationRef.isReady()) {
+        navigationRef.navigate('Payment', {amount,coin,country,address});
+    }
+}
+
 // add other navigation functions that you need and export them

@@ -8,19 +8,19 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Ionicons, FontAwesome5, FontAwesome, Foundation } from '@expo/vector-icons';
 import QRCode from 'react-native-qrcode-svg';
 
+
 export default function PaymentScreen({ navigation, route }: RootTabScreenProps<'Home'>) {
 
     const [email, setEmail] = useState(null)
     const [name, setName] = useState(null)
     const [number, setNumber] = useState(null)
-    const { isLoading, login } = useContext(AuthContext)
     const [provider, setProvider] = useState("")
-    const { amount, coin, country } = route.params;
+    const { amount, coin, country, address } = route.params;
     const [copy1, setCopy1] = useState("Copy")
-
+    const [isLoading, setIsLoading] = useState(false);
     const [conAddress, setConAddress] = useState("")
 
-
+    
     const truncate = (adr) =>
         adr?.substring(0, 8) + "..." + adr?.substring(adr?.length - 9, adr?.length);
     
@@ -58,7 +58,7 @@ export default function PaymentScreen({ navigation, route }: RootTabScreenProps<
                     
                     <View style={{ paddingBottom: 30 }}>
                         <QRCode
-                            value="0xAe95f88B1604C6E2d0c3bfdE113712E81aB3F338"
+                            value={address}
                             size={180}
                         />
                     </View>
@@ -69,7 +69,7 @@ export default function PaymentScreen({ navigation, route }: RootTabScreenProps<
                         >
                             <View style={{paddingHorizontal: 10}}>
                                 <Text style={{ color: 'white', paddingBottom: 13, fontFamily: 'Gilroy-ExtraBold' }}>{ coin } Address</Text>
-                                <Text style={{color: 'white', fontFamily: 'Gilroy-Light'}}>0xAe95f88B1604C6E2d0c3bfdE113712E81aB3F338</Text>
+                                <Text style={{color: 'white', fontFamily: 'Gilroy-Light'}}>{address}</Text>
                             </View>
                         </View>
                             

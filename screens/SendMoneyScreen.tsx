@@ -1,15 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
+import axios from "axios";
 import { Platform, StyleSheet, Image, TouchableOpacity, Dimensions} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Pressable } from 'react-native';
 import { Ionicons, FontAwesome5, FontAwesome, Foundation   } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import SelectDropdown from 'react-native-select-dropdown';
+import { AuthContext } from "../context/AuthContext";
 
 
 const avatar = require('../assets/images/unnamed.jpg');
@@ -18,8 +19,11 @@ const { width, height } = Dimensions.get("window")
 
 export default function SendMoneyScreen({ navigation, route }: RootTabScreenProps<'Home'>) {
 
-    const [amount, setAmount] = useState('');
+    const { rates } = useContext(AuthContext);
+
+    const [amount, setAmount] = useState('0');
     const { country } = route.params;
+    const [coinRate, setCoinRate] = useState(1)
 
     const carTypes = ["USD", "TZS", "USDT", "BTC", "ETH"];
     const [coin, setCoin] = useState("TZS")
@@ -29,6 +33,12 @@ export default function SendMoneyScreen({ navigation, route }: RootTabScreenProp
         const newAmount = amount.substring(0, amountLength - 1);
 
         setAmount(newAmount);
+    }
+
+    let homeCoin = "TZS"
+
+    if (country === "Nigeria") {
+        homeCoin = "NGN"
     }
 
     let [fontsLoaded] = useFonts({
@@ -76,10 +86,13 @@ export default function SendMoneyScreen({ navigation, route }: RootTabScreenProp
                             onSelect={(selectedItem, index) => {
                                 if (index === 0) {
                                     setCoin("USD")
+                                    setCoinRate(rates.usd_tzs.rate)
                                 } else if (index === 1) {
                                     setCoin("TZS")
+                                    setCoinRate(1)
                                 } else if (index === 2) {
                                     setCoin("USDT")
+                                    setCoinRate(rates.usd_tzs.rate)
                                 } else if (index === 3) {
                                     setCoin("BTC")
                                 } else if (index === 4) {
@@ -115,12 +128,13 @@ export default function SendMoneyScreen({ navigation, route }: RootTabScreenProp
                     />
                         </View>
                         {/* <Ionicons name="md-chevron-down-sharp" size={24} color="#2c2c63" style={{ marginRight: 15 }}/> */}
+
                     </View>
                 </View>
-
+                <Text style={styles.textTitle}>1 {coin} = {Number(coinRate).toFixed(2)} { homeCoin }</Text>
             </View>
 
-            <View style={{alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+            <View style={{alignItems: 'center', justifyContent: 'center', width: '100%', paddingTop: 20}}>
                 <Text style={styles.textBalance}>{amount == '' ? '0' : amount}.00</Text>
             </View>
 
