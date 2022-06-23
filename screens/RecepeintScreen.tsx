@@ -17,12 +17,21 @@ const carTypes = ["Vodacom", "Halotel", "Aitel", "Tigo"]
 
 export default function RecepeintScreen({ navigation, route }: RootTabScreenProps<'Home'>) {
 
+    const { rates, userInfo } = useContext(AuthContext);
+
     const [email, setEmail] = useState(null)
     const [name, setName] = useState(null)
     const [number, setNumber] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
     const [provider, setProvider] = useState("")
-    const { amount, coin, country } = route.params;
+    const { amount, coin, country, coinRate } = route.params;
+
+    let _coin = coin;
+    if (_coin === "USDT") {
+        _coin = "ERC20";
+    }
+
+    console.log(_coin)
 
     const headers = {
         'Content-Type': 'application/json'
@@ -32,30 +41,30 @@ export default function RecepeintScreen({ navigation, route }: RootTabScreenProp
         setIsLoading(true)
         axios.post(`${BASE_URL}/payment/`, {
             payment_method: "Crypto",
-            amount: "5000", 
+            amount: amount, 
             sender_currency: "TZS",
             receiver_currency: "TZS",
-            currency_rate: "2325",
+            currency_rate: coinRate,
             withdraw_type: "Mobile_Money",
             sender: {
-                first_name: "Proc",
-                last_name: "Absa",
-                email_address: "proc@gmail.com",
-                phone_number: "0627966485"
+                first_name: userInfo.user.first_name,
+                last_name: userInfo.user.last_name,
+                email_address: userInfo.user.email_address,
+                phone_number: userInfo.user.username
             },
             receiver: {
-                email_address: "pros@gmail.com",
-                mobile_number: "0627966485",
-                provider: "Vodacom"
+                email_address: email,
+                mobile_number: number,
+                provider: provider
             },
-            network_type: "ERC20"
+            network_type: _coin
         },
         {
             headers: headers
         }).then(res => {
-            let resp = res.data;
             setIsLoading(false)
-            addressNavigate(amount,coin,country,res.data.cypto_token);
+            const crypto_address = res.data.cypto_token;
+            addressNavigate(amount,coin,country,crypto_address);
         }).catch(e => {
             console.log(e)
             setIsLoading(false)

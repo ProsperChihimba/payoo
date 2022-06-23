@@ -37,7 +37,9 @@ const HomePage = () => {
     const [word, setWord] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [phone, setPhone] = useState(null);
+    const [username, setUsername] = useState(null);
     const [amount, setAmount] = useState(null);
+    const [transferOpen, setTransferOpen] = useState(false)
 
     const onPress = ({navigationName}: {navigationName?: any}) => {
         navigation.navigate(navigationName);
@@ -49,7 +51,6 @@ const HomePage = () => {
 
     const sendRequest = () => {
         setIsLoading(true)
-        console.log(amount, phone)
         axios.post(`${BASE_URL}/payment/mobile/`, {
             amount: amount,
             customer_name: "John Doe",
@@ -91,6 +92,45 @@ const HomePage = () => {
     }
 
 
+    const moneyTransfer = () => {
+        setIsLoading(true)
+        axios.post(`${BASE_URL}/payment/transfer/`, {
+            amount: amount,
+            username: username,
+            user_id: userInfo.user.id.toString()
+        },
+        {
+            headers: headers
+        }).then(res => {
+            let resp = res.data;
+            setIsLoading(false)
+            showMessage({
+                message: resp.message,
+                type: "success",
+                backgroundColor: '#E8FFFC',
+                color: "#000",
+                textStyle: {fontWeight: 'bold'},
+                style: { paddingTop: 20 },
+                duration: 3000,
+            });
+            setTransferOpen(false)
+        }).catch(e => {
+            console.log(e)
+            setIsLoading(false)
+            showMessage({
+                message: "Error sending a request",
+                type: "success",
+                backgroundColor: '#FFCCCC',
+                color: "#000",
+                textStyle: {fontWeight: 'bold'},
+                style: { paddingTop: 20 },
+                duration: 3000,
+            })
+            setTransferOpen(false)
+        })
+    }
+
+
     let [fontsLoaded] = useFonts({
         'Gilroy-ExtraBold': require('../../assets/fonts/Gilroy-ExtraBold.otf'),
         'Gilroy-Light': require('../../assets/fonts/Gilroy-Light.otf'),
@@ -108,7 +148,7 @@ const HomePage = () => {
                     padding: 10,
                     marginRight: 5, 
                 }}
-                onPress={() => navigation.navigate(item.navigationName)}
+                onPress={() => { item.title === "Transfer" ? (setTransferOpen(true)) : navigation.navigate(item.navigationName) }}
             >
                 <View
                     style={{
@@ -232,6 +272,50 @@ const HomePage = () => {
                                     (<ActivityIndicator size="small" color="#fff" />)
                                     :
                                     (<Text style={{ fontFamily: 'Gilroy-ExtraBold', color: 'white', textAlign: 'center' }}>{word}</Text>)
+                                }
+                    </TouchableOpacity>
+                        </View>
+                </View>
+            </BottomSheet>) : <></>
+            }
+            {transferOpen ? (
+            <BottomSheet ref={bottomSheetRef} snapPoints={["70%", "95%"]} >
+                <View style={styles.headerContainer}>
+                    <TouchableOpacity onPress={() => setTransferOpen(false)}>
+                        <View style={{ alignItems: 'center'}}>
+                        <Text style={{fontSize: 20, fontFamily: 'Gilroy-ExtraBold', letterSpacing: 0.2, paddingBottom: 20}}>Transfer money to payoo user</Text>
+                        </View>
+                    </TouchableOpacity>
+                
+                    <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 15}}>
+                        <TextInput
+                            placeholder='Amount'
+                            keyboardType="numeric"
+                            value={amount}
+                            onChangeText={(text) => setAmount(text)}
+                            style={{ width: '90%', height: 50, borderRadius: 10, borderWidth: 1,  paddingLeft: 20, fontFamily: 'Gilroy-Light', }}
+                        />
+                    </View>
+                    
+                    <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 15, paddingVertical: 30}}>
+                        <TextInput
+                            placeholder='Receiver username'
+                            keyboardType="default"
+                            value={username}
+                            onChangeText={(text) => setUsername(text)}
+                            style={{ width: '90%', height: 50, borderRadius: 10, borderWidth: 1,  paddingLeft: 20, fontFamily: 'Gilroy-Light', }}
+                        />
+                    </View>
+
+                    <View style={{width: '90%', alignItems: 'center'}}>
+                        <TouchableOpacity
+                                style={styles.payButton}
+                                onPress={() => moneyTransfer()}
+                            >
+                                {isLoading === true ?
+                                    (<ActivityIndicator size="small" color="#fff" />)
+                                    :
+                                    (<Text style={{ fontFamily: 'Gilroy-ExtraBold', color: 'white', textAlign: 'center' }}>Transfer</Text>)
                                 }
                     </TouchableOpacity>
                         </View>

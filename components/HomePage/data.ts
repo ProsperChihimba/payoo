@@ -7,7 +7,7 @@ const icons = [
         iconColor: '#32a7e2',
         backgroundColor: '#c7e1ee',
         title: 'Transfer',
-        navigationName: 'SendMoney',
+        navigationName: 'Search',
     },
     {
         id: 2,
@@ -27,7 +27,7 @@ const icons = [
         iconColor: '#ff8700',
         backgroundColor: '#f6e0c7',
         title: 'Bill',
-        navigationName: 'SendMoney',
+        navigationName: 'Root',
     },
     {
         id: 4,
@@ -37,7 +37,7 @@ const icons = [
         iconColor: '#22b07d',
         backgroundColor: '#c9efe1',
         title: 'More',
-        navigationName: 'SendMoney',
+        navigationName: 'Root',
     }
 ]
 

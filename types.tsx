@@ -25,6 +25,7 @@ export type RootStackParamList = {
   Splash: undefined;
   Recepeint: undefined;
   Payment: undefined;
+  Search: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

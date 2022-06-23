@@ -28,6 +28,7 @@ import { AuthContext } from '../context/AuthContext';
 import { navigationRef } from '../RootNavigation';
 import RecepeintScreen from '../screens/RecepeintScreen';
 import PaymentScreen from '../screens/PaymentDetails';
+import SearchScreen from '../screens/SearchScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -84,6 +85,14 @@ function RootNavigator() {
       <Stack.Screen
         name="Payment"
         component={PaymentScreen}
+        options={{
+          headerShadowVisible: false,
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={SearchScreen}
         options={{
           headerShadowVisible: false,
           headerShown: false,

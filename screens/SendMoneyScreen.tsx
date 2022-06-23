@@ -95,8 +95,10 @@ export default function SendMoneyScreen({ navigation, route }: RootTabScreenProp
                                     setCoinRate(rates.usd_tzs.rate)
                                 } else if (index === 3) {
                                     setCoin("BTC")
+                                    setCoinRate("46623838.50")
                                 } else if (index === 4) {
                                     setCoin("ETH")
+                                    setCoinRate("2466704.23")
                                 }
                                 
                             }}
@@ -263,7 +265,8 @@ export default function SendMoneyScreen({ navigation, route }: RootTabScreenProp
                     onPress={() => navigation.navigate("Recepeint", {
                         amount: amount,
                         coin: coin,
-                        country: country
+                        country: country,
+                        coinRate: coinRate
                     })}
                 >
                     {/* <Ionicons name="md-arrow-forward-circle" size={20} color="white" style={{}} /> */}

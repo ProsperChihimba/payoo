@@ -15,12 +15,12 @@ export default function PaymentScreen({ navigation, route }: RootTabScreenProps<
     const [name, setName] = useState(null)
     const [number, setNumber] = useState(null)
     const [provider, setProvider] = useState("")
-    const { amount, coin, country, address } = route.params;
+    const { amount, coin, country, crypto_address } = route.params;
     const [copy1, setCopy1] = useState("Copy")
     const [isLoading, setIsLoading] = useState(false);
     const [conAddress, setConAddress] = useState("")
 
-    
+    console.log("Cryp", crypto_address)
     const truncate = (adr) =>
         adr?.substring(0, 8) + "..." + adr?.substring(adr?.length - 9, adr?.length);
     
@@ -58,7 +58,7 @@ export default function PaymentScreen({ navigation, route }: RootTabScreenProps<
                     
                     <View style={{ paddingBottom: 30 }}>
                         <QRCode
-                            value={address}
+                            value={crypto_address}
                             size={180}
                         />
                     </View>
@@ -69,7 +69,7 @@ export default function PaymentScreen({ navigation, route }: RootTabScreenProps<
                         >
                             <View style={{paddingHorizontal: 10}}>
                                 <Text style={{ color: 'white', paddingBottom: 13, fontFamily: 'Gilroy-ExtraBold' }}>{ coin } Address</Text>
-                                <Text style={{color: 'white', fontFamily: 'Gilroy-Light'}}>{address}</Text>
+                                <Text selectable={true} style={{color: 'white', fontFamily: 'Gilroy-Light'}}>{crypto_address}</Text>
                             </View>
                         </View>
                             

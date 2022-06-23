@@ -100,6 +100,10 @@ export default function AirtimeScreen({ navigation }: RootTabScreenProps<'Home'>
                 </View>
             </View>
 
+            <View style={{ alignItems: 'center'}}>
+                <Text style={{fontSize: 20, fontFamily: 'Gilroy-ExtraBold', letterSpacing: 0.2, paddingBottom: 20}}>Buy airtime</Text>
+            </View>
+
             <View style={styles.headerContainer}>
 
                     <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 15}}>
@@ -140,7 +144,7 @@ export default function AirtimeScreen({ navigation }: RootTabScreenProps<'Home'>
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            alignItems: 'flex-start',
+            alignItems: 'center',
             backgroundColor: 'white',
         },
         headerAllow: {

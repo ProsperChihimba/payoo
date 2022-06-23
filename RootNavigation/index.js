@@ -20,9 +20,9 @@ export function OtpNavigate() {
     }
 }
 
-export function addressNavigate(amount,coin,country,address) {
+export function addressNavigate(amount,coin,country,crypto_address) {
     if (navigationRef.isReady()) {
-        navigationRef.navigate('Payment', {amount,coin,country,address});
+        navigationRef.navigate('Payment', {amount,coin,country,crypto_address});
     }
 }
 
