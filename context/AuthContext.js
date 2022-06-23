@@ -85,26 +85,27 @@ export const AuthProvider = ({ children }) => {
         })
     }
 
-    const register = (firstName, lastName, phone, email, userType, password, company) => {
+    const register = (firstName, lastName, username, email, password) => {
         setIsLoading(true)
         axios.post(`${BASE_URL}/authentication/`, {
             user: {
                 first_name: firstName,
-                middle_name: "",
+                middle_name: "Absa",
                 last_name: lastName,
                 email_address: email,
-                phone_number: phone,
+                username: username,
                 password: password,
-                company_name: company,
+                mobile_provider: "Vodacom",
+                mobile_number: username
             },
-            rule: userType,
+            type: "Mobo",
             sign_type: "signin"
         }).then(res => {
             let userInfo = res.data;
             setUserInfo(userInfo)
             AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
             setIsLoading(false)
-            OtpNavigate();
+            SignUpNavigate();
         }).catch(e => {
             console.log(e)
             setIsLoading(false)

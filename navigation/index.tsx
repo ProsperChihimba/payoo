@@ -29,6 +29,8 @@ import { navigationRef } from '../RootNavigation';
 import RecepeintScreen from '../screens/RecepeintScreen';
 import PaymentScreen from '../screens/PaymentDetails';
 import SearchScreen from '../screens/SearchScreen';
+import SignupPage from '../components/Signup';
+import RegisterSuccess from '../screens/RegisterSuccess';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -108,6 +110,8 @@ function RootNavigator() {
         <>
           <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={LoginPage} options={{ headerShown: false }} />
+          <Stack.Screen name="Signin" component={SignupPage} options={{ headerShown: false }} />
+          <Stack.Screen name="RegisterSuccess" component={RegisterSuccess} options={{ headerShown: false }} />
         </>
       )
       }

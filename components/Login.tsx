@@ -29,7 +29,7 @@ export default function LoginPage({ navigation }: RootTabScreenProps<'Home'>) {
                 
                     <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 15}}>
                     <TextInput
-                        placeholder='Barua pepe'
+                        placeholder='Email address'
                         value={email}
                         keyboardType="email-address"
                         onChangeText={(text) => setEmail(text)}
@@ -39,7 +39,7 @@ export default function LoginPage({ navigation }: RootTabScreenProps<'Home'>) {
                 
                 <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 15, paddingVertical: 30}}>
                     <TextInput
-                        placeholder='Neno Siri'
+                        placeholder='Password'
                         value={password}
                         onChangeText={text => setPassword(text)}
                         secureTextEntry
@@ -64,7 +64,7 @@ export default function LoginPage({ navigation }: RootTabScreenProps<'Home'>) {
             <View style={{flexDirection: 'row'}}>
                     <Text style={{ paddingTop: 20, fontFamily: 'Gilroy-ExtraBold', fontSize: 15 }}>New here? </Text>
                     <Pressable
-                        // onPress={() => navigation.navigate('Signin')}
+                        onPress={() => navigation.navigate('Signin')}
                     >
                         <Text style={{ paddingTop: 20, fontFamily: 'Gilroy-ExtraBold', fontSize: 15, color: '#2c2c63' }}>Signup here </Text>
                     </Pressable>
